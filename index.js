@@ -1,67 +1,44 @@
-function function1() {
-    const newElement = document.createElement("h1");
-    newElement.textContent = "Hello";
-    document.querySelector("#container").parentNode.appendChild(newElement);
+
+function addCakes() {
+    const cakesArr = [
+        {
+            cakeImgUrl: "https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=600",
+            cakeInstructions: "mix flour with milk",
+            arrowImg: "https://t4.ftcdn.net/jpg/04/03/18/15/240_F_403181548_94NP0b7ooowJRzB2srpIewpYI0rYTCsS.jpg"
+        },
+        {
+            cakeImgUrl: "https://images.pexels.com/photos/5945565/pexels-photo-5945565.jpeg?auto=compress&cs=tinysrgb&w=600",
+            cakeInstructions: "do this and then",
+            arrowImg: "https://t4.ftcdn.net/jpg/04/03/18/15/240_F_403181548_94NP0b7ooowJRzB2srpIewpYI0rYTCsS.jpg"
+        }
+    ]
+
+
+    for (const curr of cakesArr) {
+        const theCurrentCakeDiv = document.createElement('div');
+        const currImg = document.createElement('img');
+        currImg.setAttribute('src', curr.cakeImgUrl);
+        currImg.classList.add("cake-img");
+        const divForInstructions = document.createElement('div');
+        const theH5 = document.createElement('h5');
+        const theArrow = document.createElement('img');
+        theArrow.setAttribute('src', curr.arrowImg);
+        theH5.textContent = "show instructions";
+        theH5.addEventListener('click', (event) => {
+            event.target.parentNode.querySelector('p').classList.toggle('hdn');
+        })
+        const theInstructions = document.createElement('p');
+        theInstructions.classList.add('hdn');
+        theInstructions.textContent = curr.cakeInstructions;
+        divForInstructions.appendChild(theH5);
+        divForInstructions.appendChild(theInstructions);
+
+
+        theCurrentCakeDiv.appendChild(currImg);
+        theCurrentCakeDiv.appendChild(divForInstructions);
+
+        document.querySelector("body").appendChild(theCurrentCakeDiv);
+    }
 }
 
-function function2() {
-    const changeColor = document.querySelectorAll('[id*="p"]')
-    changeColor.forEach(curr => {
-        curr.style.color = 'red';
-    });
-}
-
-function function3() {
-    document.querySelector("#p3").remove();
-}
-
-function function4() {
-    const changeColor = document.querySelectorAll('[id*="p"]')
-    changeColor.forEach(curr => {
-        curr.style.border = '2px black solid';
-    });
-}
-
-function function5() {
-    const button = document.querySelector("#clickMe");
-    button.textContent = "Clicked";
-}
-
-function function6() {
-    const theBody = document.querySelector("body");
-    theBody.addEventListener('click', () => {
-        document.querySelector("body").style.backgroundColor = 'yellow';
-    });
-
-}
-
-function function7() {
-    const newul = document.createElement('ul');
-    const newli = ['item1', 'item2', 'item3'];
-    newli.forEach(li => {
-        const newil = document.createElement('li');
-        newil.textContent = li;
-        newul.appendChild(newil);
-    });
-    document.querySelector('#container').parentNode.appendChild(newul);
-}
-
-function function8() {
-    const newPicsrc = document.createElement('img');
-    newPicsrc.setAttribute("src", "https://images.pexels.com/photos/30462129/pexels-photo-30462129/free-photo-of-majestic-himalayan-mountain-landscape.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load");
-    newPicsrc.style.width = '300px';
-    newPicsrc.style.height = '300px';
-    document.querySelector("#container").parentNode.appendChild(newPicsrc);
-}
-
-
-function function9() {
-    const fontChange = document.querySelectorAll('[id*="p"]');
-    fontChange.forEach(curr => {
-        curr.style.fontFamily = "Arial, Helvetica, sans-serif";
-    });
-}
-
-function function10() {
-    document.querySelector("#clickMe").remove();
-}
+addCakes();
